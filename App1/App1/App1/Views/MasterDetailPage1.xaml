@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.Views.MasterDetailPage1"
+                  MasterBehavior="Popover">
+    
+    <!--<MasterDetailPage.Master>
+        <ContentPage Padding="10" BackgroundColor="Gray" Title="Master" Icon="baseline_view_headline_black_24.png">
+            <ContentPage.Content>
+                <StackLayout Margin="5,30,5,5">
+                    <Label Text="Master Page"></Label>
+                    <Button Text="Kullanıcı" BackgroundColor="AliceBlue" Clicked="Kullanici_BTN_Clicked"></Button>
+                    <Button Text="Fatura" BackgroundColor="AliceBlue" Clicked="Fatura_BTN_Clicked"></Button>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    
+    <MasterDetailPage.Detail>
+        <ContentPage Padding="10">
+            <ContentPage.Content>
+                <StackLayout Margin="5,30,5,5">
+                    <Label Text="Detail Page"></Label>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Detail>-->
+    
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu">
+            <Grid BackgroundColor="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid>
+                    <StackLayout Padding="0,20,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Image Source="baseline_account_box_black_24.png" Aspect="AspectFill" WidthRequest="85" HeightRequest="85" />
+                        <Label x:Name="user_txt"  Text="Name" TextColor="Black" FontSize="Large" />
+                    </StackLayout>
+                </Grid>
+                <StackLayout Margin="20,20,20,0" Grid.Row="1" Spacing="15">
+                    <ListView x:Name="navigationDrawerList" Style="{DynamicResource BorderContentView}" RowHeight="60" SeparatorVisibility="None" BackgroundColor="#e8e8e8" ItemSelected="OnMenuItemSelected">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <!-- Main design for our menu items -->
+                                    <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" Padding="20,10,0,10" Spacing="20">
+                                        <Image Source="{Binding Icon}" WidthRequest="40" HeightRequest="40" VerticalOptions="Center" />
+                                        <Label Text="{Binding Title}" FontSize="Medium" VerticalOptions="Center" TextColor="Black" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage></NavigationPage>
+    </MasterDetailPage.Detail>
+
+</MasterDetailPage>

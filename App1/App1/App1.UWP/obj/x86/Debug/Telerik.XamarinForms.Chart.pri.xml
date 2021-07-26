@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="Telerik.XamarinForms.Chart" version="1.0" primary="true">
+		<Qualifiers/>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="Telerik.XamarinForms.Chart">
+				<NamedResource name="Telerik.XamarinForms.Chart.xr.xml" uri="ms-resource://Telerik.XamarinForms.Chart/Files/Telerik.XamarinForms.Chart/Telerik.XamarinForms.Chart.xr.xml">
+					<Candidate type="Path">
+						<Value>Telerik.XamarinForms.Chart\Telerik.XamarinForms.Chart.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="Themes">
+					<NamedResource name="Generic.xaml" uri="ms-resource://Telerik.XamarinForms.Chart/Files/Telerik.XamarinForms.Chart/Themes/Generic.xaml">
+						<Candidate type="Path">
+							<Value>Telerik.XamarinForms.Chart\Themes\Generic.xaml</Value>
+						</Candidate>
+					</NamedResource>
+					<NamedResource name="Generic.xbf" uri="ms-resource://Telerik.XamarinForms.Chart/Files/Telerik.XamarinForms.Chart/Themes/Generic.xbf">
+						<Candidate type="EmbeddedData">
+							<Base64Value>[Embedded Binary Data]</Base64Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+			<ResourceMapSubtree name="Telerik.XamarinForms.Common">
+				<NamedResource name="Telerik.XamarinForms.Common.xr.xml" uri="ms-resource://Telerik.XamarinForms.Chart/Files/Telerik.XamarinForms.Common/Telerik.XamarinForms.Common.xr.xml">
+					<Candidate type="Path">
+						<Value>Telerik.XamarinForms.Common\Telerik.XamarinForms.Common.xr.xml</Value>
+					</Candidate>
+				</NamedResource>
+				<ResourceMapSubtree name="Assets">
+					<ResourceMapSubtree name="Fonts">
+						<NamedResource name="telerikfont.ttf" uri="ms-resource://Telerik.XamarinForms.Chart/Files/Telerik.XamarinForms.Common/Assets/Fonts/telerikfont.ttf">
+							<Candidate type="Path">
+								<Value>Telerik.XamarinForms.Common\Assets\Fonts\telerikfont.ttf</Value>
+							</Candidate>
+						</NamedResource>
+					</ResourceMapSubtree>
+				</ResourceMapSubtree>
+				<ResourceMapSubtree name="Themes">
+					<NamedResource name="Generic.xaml" uri="ms-resource://Telerik.XamarinForms.Chart/Files/Telerik.XamarinForms.Common/Themes/Generic.xaml">
+						<Candidate type="Path">
+							<Value>Telerik.XamarinForms.Common\Themes\Generic.xaml</Value>
+						</Candidate>
+					</NamedResource>
+				</ResourceMapSubtree>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

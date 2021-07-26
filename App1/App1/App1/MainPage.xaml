@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App1"
+             xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+             xmlns:telerikGauges="clr-namespace:Telerik.XamarinForms.DataVisualization.Gauges;assembly=Telerik.XamarinForms.DataVisualization"
+             xmlns:telerikCommon="clr-namespace:Telerik.XamarinForms.Common;assembly=Telerik.XamarinForms.Common"
+             x:Class="App1.MainPage">
+
+    <StackLayout>
+        <!-- Place new controls here -->
+
+        <telerikGauges:RadRadialGauge x:Name="gauge" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                              Margin="2"
+                              AxisRadiusFactor="1"
+                              StartAngle="90"
+                              SweepAngle="360">
+
+            <telerikGauges:RadRadialGauge.Axis>
+                <telerikGauges:GaugeLinearAxis Maximum="100"
+                                       Minimum="0"
+                                       ShowLabels="False"
+                                       StrokeThickness="0" />
+            </telerikGauges:RadRadialGauge.Axis>
+            <telerikGauges:RadRadialGauge.Ranges>
+                <telerikGauges:GaugeRangesDefinition EndThickness="1"
+                                             StartThickness="1"
+                                             Offset="0">
+                    <telerikGauges:GaugeRange Color="Blue"
+                                      From="0"
+                                      To="100" />
+                </telerikGauges:GaugeRangesDefinition>
+            </telerikGauges:RadRadialGauge.Ranges>
+            <telerikGauges:RadRadialGauge.Indicators>
+                <telerikGauges:GaugeBarIndicator x:Name="bar" EndCap="Oval"
+                                         EndThickness="5"
+                                         StartThickness="5"
+                                         Offset="3"
+                                         Value="100">
+
+                    <telerikGauges:GaugeRangeBarIndicator.GradientStops>
+                        <telerikCommon:RadGradientStop Offset="0" Color="Gray" />
+                        <telerikCommon:RadGradientStop Offset="25" Color="Red" />
+                        <telerikCommon:RadGradientStop Offset="50" Color="Yellow" />
+                        <telerikCommon:RadGradientStop Offset="75" Color="Green" />
+                    </telerikGauges:GaugeRangeBarIndicator.GradientStops>
+
+                </telerikGauges:GaugeBarIndicator>
+
+                <telerikGauges:GaugeShapeIndicator Fill="Transparent"
+                                           Position="Start"
+                                           Offset="39" />
+
+            </telerikGauges:RadRadialGauge.Indicators>
+
+        </telerikGauges:RadRadialGauge>
+
+        <Button x:Name="btn" BorderColor="#33FFFF" Text="BTN" BorderWidth="2" CornerRadius="5" Clicked="Btn_Clicked"></Button>
+    </StackLayout>
+
+</ContentPage>

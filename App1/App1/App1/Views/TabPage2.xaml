@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.Views.TabPage2">
+    
+    <ListView x:Name="ContactsList" ItemsSource="{Binding Source=BindingContext.MyList}" IsVisible="True">
+        
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" Margin="5" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Ad:" FontAttributes="Bold" FontSize="12"></Label>
+                        <Label FontSize="12">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding kullanici_adi}" ForegroundColor="Red" FontAttributes="Bold" />
+                                    <Span Text="//}" ForegroundColor="Blue"  FontAttributes="Bold" />
+                                    <Span Text="{Binding ad}" ForegroundColor="Blue"  FontAttributes="Bold" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Text="Soyad:" FontAttributes="Bold" FontSize="12"></Label>
+                        <Label Text="{Binding soyad}" FontSize="12"></Label>
+                        <Label Text="Kullanici Adi:"  FontAttributes="Bold" FontSize="12"></Label>
+                        <Label Text="{Binding kullanici_adi}" FontSize="12"></Label>
+                    </StackLayout>
+                </ViewCell>
+
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

@@ -1,0 +1,179 @@
+﻿
+@{
+    Layout = null;
+
+    deneme.Models.Kullanici kmodel = new deneme.Models.Kullanici();
+    kmodel = (deneme.Models.Kullanici)TempData["veri"];
+    TempData.Keep("veri");
+    TempData["kullanici"] = kmodel.kullanici_adi;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kullanıcı</title>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item dropdown drop-right active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        @TempData["kullanici"].ToString()
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/Mainpage/KullaniciUpdate">Update</a>
+                        <a class="dropdown-item" href="/Home/Index">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <style type="text/css">
+
+        .drop-right {
+            left: 280%;
+            width: auto;
+        }
+        .flex-grid {
+            color: white;
+            display: flex;
+            align-items: flex-start;
+            height: 720px;
+        }
+
+
+        .side {
+            border-radius: 25px;
+            border: 2px solid #2196F3;
+            position: fixed;
+            z-index: 2;
+            left: 0%;
+            top: 15%;
+            width: auto;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .body {
+            font-family: Verdana;
+            color: black;
+            font-size: 14px;
+            font-weight: bold;
+            position: absolute;
+            left: 20%;
+            top: 15%;
+            width: 90%;
+            height: 300%;
+        }
+    </style>
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+    <link href="https://kendo.cdn.telerik.com/2020.2.617/styles/kendo.bootstrap-v4.min.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="https://kendo.cdn.telerik.com/2020.2.617/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.2.617/js/jszip.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.2.617/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.2.617/js/kendo.aspnetmvc.min.js"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+
+</head>
+
+<body class="wrapper">
+
+        <div class="flex-grid">
+
+            <div class="side">
+
+                @(Html.Kendo().TreeView()
+                    .Name("treeview")
+                    .Events(events => events
+                            .Select("onSelect")
+                    )
+                    .Items(treeview =>
+                    {
+                        treeview.Add().Text("My Web Site")
+                        .SpriteCssClasses("folder")
+                        .Expanded(true)
+                        .Items(root =>
+                        {
+                            root.Add().Text("resources")
+                            .Expanded(true)
+                            .SpriteCssClasses("folder")
+                            .Items(resources =>
+                            {
+                                resources.Add().Text("pdf")
+                                .Expanded(true)
+                                .SpriteCssClasses("folder")
+                                .Items(pdf =>
+                                {
+                                    pdf.Add().Text("brochure.pdf")
+                                    .SpriteCssClasses("pdf");
+
+                                    pdf.Add().Text("prices.pdf")
+                                        .SpriteCssClasses("pdf");
+                                });
+
+                                resources.Add().Text("zip")
+                                    .SpriteCssClasses("folder");
+                            });
+
+                            root.Add().Text("about.html")
+                                .SpriteCssClasses("html");
+
+                            root.Add().Text("contacts.html")
+                                .SpriteCssClasses("html");
+
+                            root.Add().Text("index.html")
+                                .SpriteCssClasses("html");
+
+                            root.Add().Text("Dene").HtmlAttributes(new { type = "button" });
+                        });
+                    })
+                )
+
+                <style>
+                                #treeview .k-sprite {
+                                    background-image: url("@Url.Content("~/Content/web/treeview/coloricons-sprite.png")");
+                                }
+
+                                .rootfolder { background-position: 0 0; }
+                                .folder { background-position: 0 -16px; }
+                                .html { background-position: 0 -48px; }
+                </style>
+                <script>
+                    function onSelect(e) {
+                        kendoConsole.log("Selecting: " + this.text(e.node));
+                        //location.href = "http://localhost:55275/Login/Login";
+                    }
+                </script>
+            </div>
+
+            <div class="body">
+                @RenderBody()
+            </div>
+
+        </div>
+
+
+</body>
+</html>

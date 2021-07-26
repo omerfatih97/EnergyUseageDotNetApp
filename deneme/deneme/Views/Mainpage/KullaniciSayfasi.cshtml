@@ -1,0 +1,86 @@
+﻿@model deneme.Models.Kullanici
+
+@{
+    ViewBag.Title = "KullaniciSayfasi";
+    Layout = "~/Views/Shared/_AfterLogin.cshtml";
+    deneme.Models.Kullanici kmodel = new deneme.Models.Kullanici();
+    kmodel = (deneme.Models.Kullanici)TempData["veri"];
+    TempData.Keep("veri");
+    TempData["kullanici"] = kmodel.kullanici_adi;
+}
+
+
+<h2>Kullanıcı Bilgileri</h2>
+@if ((string)TempData["sonuc"] == "Basarili")
+{
+    <div class="alert alert-success">
+        <strong>Hoşgeldin @kmodel.ad</strong>
+    </div>
+    <script>
+        $(".alert").delay(2000).fadeOut("fast", function () { $(this).remove(); });
+    </script>
+    TempData["sonuc"] = "Cikis";
+}
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        @{
+            var base64 = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(""));
+            try{
+                base64 = Convert.ToBase64String(kmodel.resim);
+            }catch(Exception e)
+            {
+                base64 = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(""));
+            }
+            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+        }
+
+        <img src="@imgSrc" width="200" height="200" />
+
+        <dt>
+            @Html.DisplayNameFor(model => kmodel.kullanici_adi)
+            @Html.DisplayFor(model => kmodel.kullanici_adi)
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => kmodel.ad)
+            @Html.DisplayFor(model => kmodel.ad)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => kmodel.soyad)
+
+            @Html.DisplayFor(model => kmodel.soyad)
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => kmodel.tel)
+            @Html.DisplayFor(model => kmodel.tel)
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => kmodel.email)
+            @Html.DisplayFor(model => kmodel.email)
+        </dt>
+
+    </dl>
+
+</div>
+
+<script>
+    $(window).load(function () {
+        delQr();
+    });
+
+    function delQr() {
+        $.getJSON("/Login/DelQr").done(function (data) {
+            jsonObject = JSON.parse(data);
+        });
+    }
+
+</script>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

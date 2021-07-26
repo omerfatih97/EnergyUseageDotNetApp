@@ -1,0 +1,125 @@
+﻿@using deneme.Models
+
+@model deneme.Models.Kullanici
+
+@{
+    ViewBag.Title = "Giriş";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    deneme.Controllers.LoginController tempp = new deneme.Controllers.LoginController();
+    TempData["qr_text"] = tempp.ui();
+    TempData.Keep("qr_text");
+}
+
+<ul class="nav nav-tabs justify-content-end">
+    <li class="nav-item">
+        <a class="nav-link active" id="user-tab" data-toggle="tab" href="#user" role="tab" aria-controls="user" aria-selected="true">Kullanıcı Bilgileri ile Giriş</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="qr-tab" data-toggle="tab" href="#qr" role="tab" aria-controls="qr" aria-selected="false">Qr ile Girişi</a>
+    </li>
+</ul>
+
+@using (Html.BeginForm("Index", "Login", FormMethod.Post))
+{
+
+    <div class="tab-content">
+        <div class="tab-pane active" id="user" role="tabpanel" aria-labelledby="user-tab">
+            <fieldset class="center">
+                <table>
+                    <div class="bs-example" style="border:2px solid gray;">
+                        <div class="container" style="margin-top: 50px;">
+                            <div class="row" style="margin-left: 5px;">
+
+                                <div class="col">
+                                    <h1 class="centerlook"> Login Page </h1>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col centerlook">
+
+                                    <div class="row centerlook">
+                                        <label style="margin-right:10px;">User Name: </label>
+                                        @Html.EditorFor(model => model.kullanici_adi, new { style = "margin-left: 5px;" })     *
+                                        @Html.ValidationMessageFor(model => model.kullanici_adi)
+                                    </div>
+
+                                    <div class="row centerlook" style="padding-right: 5px;">
+                                        <label style="margin-left: 60px; margin-right:10px; ">Password:</label>
+                                        @Html.EditorFor(model => model.sifre, new { style = "left:55px;" })     *
+                                        @Html.ValidationMessageFor(model => model.sifre)
+                                    </div>
+
+                                    <div class="row loginbtn" style="padding-left: 155px; margin-top: 20px;">
+                                        <input type="submit" value="Login" class="btn btn-primary" style="border-left-width: 50px;border-right-width: 50px;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </table>
+            </fieldset>
+        </div>
+
+        <div class="tab-pane" id="qr" role="tabpanel" aria-labelledby="qr-tab">
+            <fieldset class="center">
+                <table>
+                    <div class="bs-example" style="border:2px solid gray;">
+                        <div class="container" style="margin-top: 50px; margin-left: 15px;">
+                            <div class="row" style="margin-left: 5px;">
+                                <div class="col">
+                                    <h1 class="centerlook" style="margin-left: 20px;"> QR ile Giriş </h1>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="container " style="margin-left: 15px;">
+                            <div class="row" style="margin-left: 5px;">
+                                <div class="col centerlook" style="margin-left: 60px;">
+                                    @if (TempData["qr_text"] != null)
+                                    {
+                                        @Html.GenerateQRCode(TempData["qr_text"].ToString())
+                                    }
+                                </div>
+
+                                <script>
+
+                                    $(function () {
+                                        setInterval(CheckKullanici, 10 * 1000);
+                                        setInterval(delQr, 120 * 1000);
+                                     });
+
+                                    function CheckKullanici() {
+                                        $.getJSON("/Login/GetData").done(function (data) {
+                                            jsonObject = JSON.parse(data);
+                                            if (jsonObject == true) {
+                                                window.location.href = '@Url.Action("KullaniciSayfasi", "Mainpage")';
+                                            }
+                                        });
+                                    }
+
+                                    function delQr() {
+                                        $.getJSON("/Login/DelQr").done(function (data) {
+                                            jsonObject = JSON.parse(data);
+                                            location.reload(true);
+                                        });
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </table>
+            </fieldset>
+        </div>
+    </div>    
+}
+
+<script>
+    $('#myTab a').on('click', function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
+</script>

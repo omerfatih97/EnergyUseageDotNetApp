@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+
+@if ((string)TempData["Referrer"] == "SuccessMessage")
+{
+    <div class="alert alert-success">
+        <strong>Kayıt Başarılı.</strong>
+    </div>
+    <script>
+        $(".alert").delay(2000).fadeOut("fast", function () { $(this).remove(); });
+    </script>
+}
+
+@if ((string)TempData["sonuc"] == "Cikis")
+{
+    <div class="alert alert-info">
+        <strong>Çıkış Başarılı.</strong>
+    </div>
+    <script>
+        $(".alert").delay(2000).fadeOut("fast", function () { $(this).remove(); });
+    </script>
+}
+
+
+<div id="responsive-panel" class="navbar navbar-dark bg-light">
+    @(Html.Kendo().DropDownTree()
+                                                        .Name("dropdowntree") //The name of the dropdowntree is mandatory. It specifies the "id" attribute of the widget.
+                                                        .HtmlAttributes(new { style = "width: 100%" })
+                                                        .Height("auto")
+                                                        .Placeholder("Seçim")
+                                                        .Items(dropdowntree =>
+                                                        {
+                                                            dropdowntree.Add().Text("Ana Sayfa");
+
+                                                            dropdowntree.Add().Text("Kullanıcı")
+                                                                .Expanded(true)
+                                                                .Items(root =>
+                                                                {
+                                                                    root.Add().Text("Bilgiler");
+                                                                    root.Add().Text("Bilgi Güncelleme");
+                                                                    root.Add().Text("Şifre Değişikliği");
+                                                                });
+
+                                                            dropdowntree.Add().Text("Çıkış");
+                                                        })
+    )
+</div>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PriInfo>
+	<ResourceMap name="Syncfusion.SfProgressBar.XForms.UWP" version="1.0" primary="true">
+		<Qualifiers/>
+		<ResourceMapSubtree name="Files">
+			<ResourceMapSubtree name="Syncfusion.SfProgressBar.XForms.UWP">
+				<NamedResource name="Font Stepprogress icon.ttf" uri="ms-resource://Syncfusion.SfProgressBar.XForms.UWP/Files/Syncfusion.SfProgressBar.XForms.UWP/Font Stepprogress icon.ttf">
+					<Candidate type="Path">
+						<Value>Syncfusion.SfProgressBar.XForms.UWP\Font Stepprogress icon.ttf</Value>
+					</Candidate>
+				</NamedResource>
+			</ResourceMapSubtree>
+		</ResourceMapSubtree>
+	</ResourceMap>
+</PriInfo>

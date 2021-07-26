@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html> 
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kayıt</title>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Navbar</a>
+
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <a href="/Login/Login" class="btn btn-outline-success my-2 my-sm-0">Oturum Aç</a>
+                @*<ul class="navbar-nav">
+                        <li class="nav-item dropdown drop-right active">
+                            <a class="dropdown-toggle btn btn-outline-success my-2 my-sm-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Oturum Aç
+                            </a>
+                            <div class="dropdown-content" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="btn btn-outline-success my-2 my-sm-0" href="/QRCodeGenerator/Index">QR ile Oturum Aç</a>
+                                <a href="/Login/Login" class="btn btn-outline-success my-2 my-sm-0">Kullanıcı Bilgilerini Kullanarak</a>
+                            </div>
+                        </li>
+                    </ul>*@
+                <a href="/User/Kayit" class="btn btn-outline-success my-2 my-sm-0">Kayıt Ol</a>
+            </form>
+        </div>
+    </nav>
+
+
+    <style type="text/css">
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            padding: 10px 15px;
+            z-index: 1;
+            min-width: 100%;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 0px 10px;
+            z-index: 1;
+            min-width: 100%;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            padding-top: 1em;
+            text-align: center;
+        }
+
+        .bs-example {
+            height: 500px;
+            width:400px;
+        }
+
+        .centerlook {
+            padding-top: 20px;
+            padding-left: 40px;
+            font-weight: bold;
+        }
+
+        .center {
+            padding-top: 20px;
+            padding-left: 450px;
+        }
+
+        .error {
+            padding-left: 400px;
+            font-weight: bold;
+            width: 1000px;
+            color: red;
+        }
+
+        .label {
+            margin-right: 10px;
+        }
+
+        .loginbtn {
+            margin-top: 10px;
+            margin-left: 15px;
+            border-left-width: 50px;
+            border-right-width: 50px;
+            padding-left: 200px;
+        }
+    </style>
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+    <link href="https://kendo.cdn.telerik.com/2020.2.617/styles/kendo.bootstrap-v4.min.css" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="https://kendo.cdn.telerik.com/2020.2.617/js/jquery.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.2.617/js/jszip.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.2.617/js/kendo.all.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.2.617/js/kendo.aspnetmvc.min.js"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+
+</head>
+    <body>
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+    </body>
+</html>

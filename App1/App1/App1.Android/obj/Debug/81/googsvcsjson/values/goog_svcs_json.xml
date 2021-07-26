@@ -1,0 +1,1 @@
+<resources><string name="gcm_defaultSenderId" translatable="false">564939494409</string><string name="firebase_database_url" translatable="false">https://orbital-highway-284712.firebaseio.com</string><string name="google_storage_bucket" translatable="false">orbital-highway-284712.appspot.com</string></resources>

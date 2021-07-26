@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:pages1="clr-namespace:App1"
+            xmlns:pages2="clr-namespace:App1.Views"
+            x:Class="App1.Views.TabbedPage1">
+    
+    <NavigationPage.TitleView>
+        <AbsoluteLayout VerticalOptions="CenterAndExpand">
+            <Label Text="Ana Sayfa" FontSize="Title"  TextColor="White" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0"></Label>
+            <Button ImageSource="baseline_map_black_2x.png" BorderColor="Transparent"
+                BackgroundColor="Transparent" AbsoluteLayout.LayoutFlags="PositionProportional" 
+                Clicked="Map_Btn_Clicked"    AbsoluteLayout.LayoutBounds="0.79,0.4,20,30" />
+            <Button ImageSource="baseline_settings_black_18.png" BorderColor="Transparent"
+                BackgroundColor="Transparent" AbsoluteLayout.LayoutFlags="PositionProportional" 
+                Clicked="Settings_Btn_Clicked"    AbsoluteLayout.LayoutBounds="1,0,40,40" />
+        </AbsoluteLayout>
+    </NavigationPage.TitleView>
+
+    <pages1:MainPage Title="Bilgiler" Icon="baseline_account_box_black_24.png"/>
+    <pages2:TabPage2 Title="Page 2" Icon="icon.png" />
+
+</TabbedPage>
